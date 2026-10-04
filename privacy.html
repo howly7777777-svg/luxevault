@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LuxeVault — Privacy Policy & Terms of Service</title>
+  <link rel="icon" type="image/png" href="icon.png" />
+  <style>
+    :root {
+      --bg: #09090b;
+      --card-bg: rgba(22, 22, 28, 0.85);
+      --card-border: rgba(212, 175, 55, 0.25);
+      --gold: #d4af37;
+      --gold-light: #f3e5ab;
+      --text: #f5f5f7;
+      --text-muted: #9e9ea7;
+      --font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: var(--font-family);
+      line-height: 1.7;
+      background-image: radial-gradient(circle at 50% 0%, rgba(212, 175, 55, 0.1) 0%, transparent 60%);
+      background-attachment: fixed;
+    }
+
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    header {
+      padding: 24px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      position: sticky;
+      top: 0;
+      background: rgba(9, 9, 11, 0.9);
+      backdrop-filter: blur(20px);
+      z-index: 100;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .brand img {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      border: 1px solid rgba(212, 175, 55, 0.3);
+    }
+
+    .brand-name {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--gold-light);
+    }
+
+    .lang-select {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      color: var(--gold-light);
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 13px;
+      outline: none;
+      cursor: pointer;
+    }
+
+    .content-box {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 48px;
+      margin: 48px 0;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    }
+
+    h1 {
+      font-size: 34px;
+      font-weight: 800;
+      color: var(--gold-light);
+      margin-bottom: 8px;
+    }
+
+    .last-updated {
+      color: var(--text-muted);
+      font-size: 14px;
+      margin-bottom: 36px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding-bottom: 16px;
+    }
+
+    h2 {
+      font-size: 22px;
+      color: var(--gold);
+      margin: 32px 0 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    p, li {
+      color: #d1d1d6;
+      font-size: 15px;
+      margin-bottom: 14px;
+    }
+
+    ul {
+      padding-left: 20px;
+      margin-bottom: 20px;
+    }
+
+    li { margin-bottom: 8px; }
+
+    .highlight-card {
+      background: rgba(212, 175, 55, 0.08);
+      border-left: 3px solid var(--gold);
+      padding: 16px 20px;
+      border-radius: 0 12px 12px 0;
+      margin: 20px 0;
+    }
+
+    .highlight-card p {
+      margin: 0;
+      color: var(--gold-light);
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    a {
+      color: var(--gold);
+      text-decoration: underline;
+    }
+
+    footer {
+      padding: 40px 0;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 13px;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    @media (max-width: 768px) {
+      .content-box { padding: 24px; }
+      h1 { font-size: 26px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+      <a href="index.html" class="brand">
+        <img src="icon.png" alt="LuxeVault Icon" />
+        <span class="brand-name">LuxeVault</span>
+      </a>
+      <div style="display: flex; gap: 14px; align-items: center;">
+        <a href="index.html" style="color: var(--text-muted); text-decoration: none; font-size: 14px;">Home</a>
+        <select class="lang-select" id="langSelector" onchange="changeLanguage(this.value)">
+          <option value="en">English (US)</option>
+          <option value="zh-Hant">繁體中文</option>
+          <option value="zh-Hans">简体中文</option>
+          <option value="ja">日本語</option>
+          <option value="fr">Français</option>
+        </select>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="content-box" id="legalContent">
+      <!-- Dynamic Legal Content populated by JS -->
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p id="footSupport">Support Contact: <a href="mailto:howly7777777@gmail.com">howly7777777@gmail.com</a></p>
+      <p style="margin-top: 8px;">© 2026 LuxeVault by vajrahowly. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    const legalDocs = {
+      "en": `
+        <h1>Privacy Policy & Terms of Service</h1>
+        <div class="last-updated">Effective Date: October 4, 2026 | App: LuxeVault (Bundle ID: com.vajrahowly.luxevault)</div>
+
+        <div class="highlight-card">
+          <p>✦ Absolute Zero-Knowledge Guarantee: LuxeVault is an offline-first, local-storage private vault. We do not operate external web servers, run third-party tracking scripts, or collect any personal financial figures.</p>
+        </div>
+
+        <h2>1. Zero Data Collection Architecture</h2>
+        <p>LuxeVault respects the utmost confidentiality of high-net-worth connoisseurs. The app does not collect, sell, or share:</p>
+        <ul>
+          <li>No personal identification info (names, emails, physical addresses).</li>
+          <li>No asset photos, serial numbers, purchase prices, or appraisal valuations.</li>
+          <li>No behavioral analytics, telemetry, crash trackers, or marketing pixels.</li>
+        </ul>
+
+        <h2>2. Data Storage & iCloud Security</h2>
+        <p>All database records are managed natively via Apple SwiftData on your physical iOS device. If enabled, CloudKit data synchronization operates exclusively within your personal, private Apple iCloud Container. Data in transit and at rest is end-to-end encrypted by Apple.</p>
+
+        <h2>3. Camera & AI Vision Usage</h2>
+        <p>LuxeVault requests camera access solely for on-device live Optical Character Recognition (OCR) to extract watch references, whisky bottle numbers, and graded card certs. No live camera feed or captured pictures ever leave your iPhone.</p>
+
+        <h2>4. Subscriptions & In-App Purchases (EULA)</h2>
+        <p>LuxeVault offers optional auto-renewable subscriptions (Monthly Pro, Yearly Pro with a 7-day free trial) and a Founder Lifetime non-consumable purchase:</p>
+        <ul>
+          <li><strong>Billing:</strong> Charges are processed directly by Apple via your iTunes / Apple ID Account.</li>
+          <li><strong>Auto-Renewal:</strong> Subscriptions automatically renew unless cancelled at least 24 hours prior to the conclusion of the current cycle.</li>
+          <li><strong>Free Trial:</strong> Any unused portion of a free trial is forfeited upon purchase of a subscription.</li>
+          <li><strong>Management:</strong> Users can modify or cancel subscriptions anytime in App Store Account Settings.</li>
+        </ul>
+        <p>LuxeVault adheres to the <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" target="_blank">Apple Standard Licensed Application End User License Agreement (EULA)</a>.</p>
+
+        <h2>5. Contact & Support</h2>
+        <p>For questions or assistance regarding LuxeVault, please email the developer directly at: <a href="mailto:howly7777777@gmail.com">howly7777777@gmail.com</a>.</p>
+      `,
+
+      "zh-Hant": `
+        <h1>隱私權政策與服務條款 (EULA)</h1>
+        <div class="last-updated">生效日期：2026 年 10 月 4 日 | 應用程式：LuxeVault (com.vajrahowly.luxevault)</div>
+
+        <div class="highlight-card">
+          <p>✦ 零知識（Zero-Knowledge）隱私承諾：LuxeVault 採本機端離線架構。我們無外部資料庫伺服器、絕無第三方追蹤程式碼，亦絕不存取您的任何藏品照片與財產金額。</p>
+        </div>
+
+        <h2>1. 零資料收集原則</h2>
+        <p>LuxeVault 高度尊重藏家對於私人財富的隱私防護需求，本應用程式絕不收集、不出售亦不分享：</p>
+        <ul>
+          <li>無個人識別資訊（姓名、電子郵件、電話或住址）。</li>
+          <li>無藏品照片、機芯序號、購買收據、鑑價記錄或總淨值。</li>
+          <li>無任何行為追蹤分析代碼、廣告代碼或遙測技術。</li>
+        </ul>
+
+        <h2>2. 本地儲存與 Apple iCloud 安全備份</h2>
+        <p>所有數據均以 Apple SwiftData 原生架構儲存於您的實體 iPhone 裝置內。若開啟同步，將僅透過您個人私密的 Apple iCloud 容器進行傳輸，全程受到 Apple 嚴密之端對端加密技術（End-to-End Encryption）保護。</p>
+
+        <h2>3. 相機鏡頭與 AI Vision 識別權限</h2>
+        <p>相機權限僅供裝置本機進行即時光學字元辨識（OCR），用以識別酒標年份、錶盤型號與評級卡序號。取景影像在記憶體運算後立即釋放，絕無任何畫面或照片傳輸至任何雲端。</p>
+
+        <h2>4. 訂閱與內購條款 (EULA)</h2>
+        <p>LuxeVault 提供自動續訂型訂閱（月度會員、包含 7 天免費試用之年度尊榮會員）以及創始人終身買斷版（非消耗性商品）：</p>
+        <ul>
+          <li><strong>扣款機制：</strong>於確認購買後，將由 Apple 透過您的 Apple ID 帳戶進行安全扣款。</li>
+          <li><strong>自動續訂：</strong>若未於目前計費週期結束前至少 24 小時取消，訂閱將會自動續訂。</li>
+          <li><strong>免費試用：</strong>在 7 天免費試用期間內取消不會產生任何費用。</li>
+          <li><strong>取消管理：</strong>您可隨時前往 iPhone「設定 > Apple ID > 訂閱項目」進行方案管理或取消。</li>
+        </ul>
+        <p>本應用程式完全遵循 <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" target="_blank">Apple 標準使用者授權協議 (EULA)</a>。</p>
+
+        <h2>5. 開發者支援與聯繫</h2>
+        <p>若您對 LuxeVault 有任何技術問題或隱私疑慮，歡迎隨時來信：<a href="mailto:howly7777777@gmail.com">howly7777777@gmail.com</a>。</p>
+      `,
+
+      "zh-Hans": `
+        <h1>隐私政策与服务条款 (EULA)</h1>
+        <div class="last-updated">生效日期：2026 年 10 月 4 日 | 应用程序：LuxeVault (com.vajrahowly.luxevault)</div>
+
+        <div class="highlight-card">
+          <p>✦ 零知识（Zero-Knowledge）隐私承诺：LuxeVault 采用本地离线优先架构。我们不设任何外部数据库服务器，绝无第三方分析追踪，亦绝不收集您的藏品照片或身价数字。</p>
+        </div>
+
+        <h2>1. 零数据收集原则</h2>
+        <p>LuxeVault 高度尊重藏家对于资产隐私的保护需求，本应用绝不收集、不出售亦不分享：</p>
+        <ul>
+          <li>无个人身份信息（姓名、邮箱、电话或地址）。</li>
+          <li>无藏品照片、机芯序号、发票凭据、估值历史或资产净值。</li>
+          <li>无任何用户行为追踪、广告 SDK 或遥测数据。</li>
+        </ul>
+
+        <h2>2. 本地存储与 iCloud 安全保护</h2>
+        <p>所有数据均通过 Apple SwiftData 原生框架储存于您的设备本土。如开启同步，仅在您专属的私有 Apple iCloud 空间内进行，受到 Apple 官方端对端加密技术的完整保护。</p>
+
+        <h2>3. 相机与端侧 AI 扫描权限</h2>
+        <p>相机权限仅用于设备本端进行即时光学校验识别（OCR），用于读取酒标、表盘与卡牌亚克力盒标签。任何画面或取景内容均在内存中即时处理后释放，绝不上载任何云端。</p>
+
+        <h2>4. 订阅与内购条款 (EULA)</h2>
+        <p>LuxeVault 提供自动续费订阅（月度会员、含 7 天免费试用的年度尊荣会员）及创始人终身买断版：</p>
+        <ul>
+          <li><strong>扣款说明：</strong>所有购买均通过 Apple 官方经由您的 Apple ID 账户扣款。</li>
+          <li><strong>自动续费：</strong>如需取消订阅，需在当前周期结束前至少 24 小时进行。</li>
+          <li><strong>试用政策：</strong>7 天试用期内取消不产生任何费用。</li>
+          <li><strong>管理方式：</strong>可在“设置 > Apple ID > 订阅”中随时管理或取消。</li>
+        </ul>
+        <p>遵循 <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" target="_blank">Apple 标准最终用户许可协议 (EULA)</a>。</p>
+
+        <h2>5. 联系与支持</h2>
+        <p>如需技术支持或有任何疑问，请联系开发者支持邮箱：<a href="mailto:howly7777777@gmail.com">howly7777777@gmail.com</a>。</p>
+      `,
+
+      "ja": `
+        <h1>プライバシーポリシー＆利用規約 (EULA)</h1>
+        <div class="last-updated">発効日: 2026年10月4日 | アプリ: LuxeVault (com.vajrahowly.luxevault)</div>
+
+        <div class="highlight-card">
+          <p>✦ 完全ゼロナレッジ保証：LuxeVaultはローカル完結型アーキテクチャを採用しています。外部サーバーや第三者トラッキングを使用せず、お客様の資産データや写真を収集することは一切ありません。</p>
+        </div>
+
+        <h2>1. 個人データの非収集について</h2>
+        <p>LuxeVaultはお客様の機密性を最優先に設計されています。以下の情報を収集・売買・共有することはございません：</p>
+        <ul>
+          <li>氏名、メールアドレス等の個人識別情報</li>
+          <li>コレクションの写真、購入価格、シリアル番号、評価額</li>
+          <li>行動分析データ、広告SDK、クラッシュログ</li>
+        </ul>
+
+        <h2>2. データ保存とiCloud同期の安全性</h2>
+        <p>データはAppleのSwiftDataにより端末内に安全に保管されます。同期を有効にした場合でも、お客様個人の暗号化されたプライベートiCloudコンテナ内でのみ同期されます。</p>
+
+        <h2>3. カメラ機能およびAI認識の利用目的</h2>
+        <p>カメラへのアクセスは、ボトルのラベルや鑑定済みカードのOCR自動読み取りにのみ使用されます。カメラの映像や撮影画像が外部に送信されることはありません。</p>
+
+        <h2>4. サブスクリプションおよび買い切りプラン (EULA)</h2>
+        <p>自動更新サブスクリプション（月額プラン、7日間無料体験付き年間Proプラン）およびファウンダー終身版（非消耗型買い切り）を提供しています：</p>
+        <ul>
+          <li><strong>お支払い：</strong>Apple IDアカウントを通じて請求されます。</li>
+          <li><strong>自動更新：</strong>現在の契約期間が終了する24時間以上前に解約されない限り自動更新されます。</li>
+          <li><strong>無料体験：</strong>7日間の無料期間中にキャンセルした場合、料金は発生しません。</li>
+        </ul>
+        <p>本アプリは <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" target="_blank">Apple標準利用規約 (EULA)</a> に準拠します。</p>
+
+        <h2>5. お問い合わせ</h2>
+        <p>ご不明な点やサポートが必要な場合は、開発者窓口までメールでお問い合わせください：<a href="mailto:howly7777777@gmail.com">howly7777777@gmail.com</a></p>
+      `,
+
+      "fr": `
+        <h1>Politique de Confidentialité & Conditions d'Utilisation</h1>
+        <div class="last-updated">Date d'effet : 4 octobre 2026 | Application : LuxeVault (com.vajrahowly.luxevault)</div>
+
+        <div class="highlight-card">
+          <p>✦ Garantie Zero-Knowledge : LuxeVault est une application conçue pour fonctionner en local. Nous n'exploitons aucun serveur externe, aucun outil de traçage et ne collectons aucune donnée sur vos actifs.</p>
+        </div>
+
+        <h2>1. Absence Totale de Collecte de Données</h2>
+        <p>LuxeVault garantit une discrétion absolue. L'application ne collecte, ne vend et ne partage :</p>
+        <ul>
+          <li>Aucune donnée personnelle (nom, courriel, coordonnées).</li>
+          <li>Aucune photo d'actif, numéro de série ou estimation de valeur.</li>
+          <li>Aucun outil d'analyse comportementale ou SDK publicitaire.</li>
+        </ul>
+
+        <h2>2. Stockage Local et Synchronisation iCloud</h2>
+        <p>Vos inventaires sont enregistrés sur votre appareil via Apple SwiftData. En cas de synchronisation, celle-ci s'effectue exclusivement au sein de votre conteneur iCloud privé chiffré de bout en bout par Apple.</p>
+
+        <h2>3. Utilisation de l'Appareil Photo et Vision IA</h2>
+        <p>L'accès à la caméra est sollicité exclusivement pour la reconnaissance de caractères OCR locale (étiquettes de bouteilles, montres, boîtiers scellés). Aucune image n'est transmise vers l'extérieur.</p>
+
+        <h2>4. Abonnements et Achats Intégrés (EULA)</h2>
+        <p>LuxeVault propose des abonnements à renouvellement automatique (Mensuel Pro, Annuel Pro avec 7 jours d'essai gratuit) et une Édition Fondateur à vie :</p>
+        <ul>
+          <li><strong>Facturation :</strong> Les paiements sont débités via votre compte Apple ID.</li>
+          <li><strong>Renouvellement :</strong> L'abonnement se renouvelle automatiquement sauf résiliation au moins 24 heures avant l'échéance.</li>
+          <li><strong>Essai Gratuit :</strong> L'annulation durant les 7 jours d'essai gratuit n'engendre aucun frais.</li>
+        </ul>
+        <p>L'application est régie par le <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" target="_blank">Contrat de licence standard d'Apple (EULA)</a>.</p>
+
+        <h2>5. Contact & Support</h2>
+        <p>Pour toute demande d'assistance ou question, écrivez au développeur à : <a href="mailto:howly7777777@gmail.com">howly7777777@gmail.com</a>.</p>
+      `
+    };
+
+    function changeLanguage(lang) {
+      const doc = legalDocs[lang] || legalDocs["en"];
+      document.getElementById("legalContent").innerHTML = doc;
+      document.documentElement.lang = lang;
+      localStorage.setItem("luxevault_lang", lang);
+    }
+
+    window.addEventListener("DOMContentLoaded", () => {
+      const saved = localStorage.getItem("luxevault_lang");
+      if (saved && legalDocs[saved]) {
+        document.getElementById("langSelector").value = saved;
+        changeLanguage(saved);
+      } else {
+        const browser = navigator.language || navigator.userLanguage;
+        if (browser.startsWith("zh-TW") || browser.startsWith("zh-HK")) changeLanguage("zh-Hant");
+        else if (browser.startsWith("zh")) changeLanguage("zh-Hans");
+        else if (browser.startsWith("ja")) changeLanguage("ja");
+        else if (browser.startsWith("fr")) changeLanguage("fr");
+        else changeLanguage("en");
+      }
+    });
+  </script>
+</body>
+</html>

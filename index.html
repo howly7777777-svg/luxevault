@@ -1,1 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LuxeVault — The Ultimate Private Vault for Rare Collectibles</title>
+  <meta name="description" content="LuxeVault is the premier private vault for collectors of haute horlogerie, rare spirits, graded cards, limited sneakers, and fine jewelry." />
+  <link rel="icon" type="image/png" href="icon.png" />
+  <style>
+    :root {
+      --bg: #09090b;
+      --card-bg: rgba(22, 22, 28, 0.85);
+      --card-border: rgba(212, 175, 55, 0.25);
+      --card-border-hover: rgba(212, 175, 55, 0.6);
+      --gold: #d4af37;
+      --gold-light: #f3e5ab;
+      --gold-glow: rgba(212, 175, 55, 0.25);
+      --text: #f5f5f7;
+      --text-muted: #9e9ea7;
+      --accent: #1f1f26;
+      --font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
 
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: var(--font-family);
+      line-height: 1.6;
+      overflow-x: hidden;
+      background-image: 
+        radial-gradient(circle at 50% 0%, rgba(212, 175, 55, 0.12) 0%, transparent 60%),
+        radial-gradient(circle at 10% 30%, rgba(212, 175, 55, 0.05) 0%, transparent 40%),
+        radial-gradient(circle at 90% 70%, rgba(212, 175, 55, 0.04) 0%, transparent 50%);
+      background-attachment: fixed;
+    }
+
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Navigation */
+    header {
+      padding: 24px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      position: sticky;
+      top: 0;
+      background: rgba(9, 9, 11, 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      z-index: 100;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .brand img {
+      width: 44px;
+      height: 44px;
+      border-radius: 11px;
+      box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+      border: 1px solid rgba(212, 175, 55, 0.4);
+    }
+
+    .brand-name {
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      background: linear-gradient(135deg, #ffffff 0%, var(--gold-light) 60%, var(--gold) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .lang-select {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      color: var(--gold-light);
+      padding: 7px 14px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 500;
+      outline: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .lang-select:hover {
+      background: rgba(212, 175, 55, 0.15);
+      border-color: var(--gold);
+    }
+
+    .nav-btn {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.2s ease;
+    }
+
+    .nav-btn:hover {
+      color: var(--gold-light);
+    }
+
+    /* Hero */
+    .hero {
+      padding: 90px 0 60px;
+      text-align: center;
+      position: relative;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(212, 175, 55, 0.12);
+      border: 1px solid rgba(212, 175, 55, 0.35);
+      color: var(--gold-light);
+      padding: 6px 16px;
+      border-radius: 30px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 {
+      font-size: 54px;
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 20px;
+      letter-spacing: -1px;
+    }
+
+    .hero-gradient {
+      background: linear-gradient(135deg, #ffffff 20%, #f3e5ab 70%, #d4af37 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      font-size: 20px;
+      color: var(--text-muted);
+      max-width: 720px;
+      margin: 0 auto 40px;
+      font-weight: 400;
+    }
+
+    .hero-actions {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(135deg, #e6c86e 0%, #d4af37 50%, #997819 100%);
+      color: #0b0b0e;
+      padding: 14px 28px;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: 700;
+      text-decoration: none;
+      box-shadow: 0 8px 24px var(--gold-glow);
+      transition: all 0.25s ease;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(212, 175, 55, 0.4);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: var(--text);
+      padding: 14px 24px;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(212, 175, 55, 0.4);
+    }
+
+    /* Features Grid */
+    .features-section {
+      padding: 80px 0;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+
+    .section-header h2 {
+      font-size: 36px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .section-header p {
+      color: var(--text-muted);
+      font-size: 17px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 32px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: var(--card-border-hover);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5), 0 0 20px rgba(212, 175, 55, 0.1);
+    }
+
+    .card:hover::before {
+      opacity: 1;
+    }
+
+    .card-icon {
+      font-size: 32px;
+      margin-bottom: 20px;
+      display: inline-block;
+      width: 56px;
+      height: 56px;
+      line-height: 56px;
+      text-align: center;
+      background: rgba(212, 175, 55, 0.12);
+      border-radius: 14px;
+      border: 1px solid rgba(212, 175, 55, 0.3);
+    }
+
+    .card h3 {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: var(--gold-light);
+    }
+
+    .card p {
+      color: var(--text-muted);
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    /* Pricing Section */
+    .pricing-section {
+      padding: 80px 0;
+      background: rgba(18, 18, 24, 0.4);
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 24px;
+      max-width: 980px;
+      margin: 0 auto;
+    }
+
+    .pricing-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 36px 28px;
+      text-align: center;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    .pricing-card.featured {
+      border: 2px solid var(--gold);
+      box-shadow: 0 10px 40px rgba(212, 175, 55, 0.25);
+      transform: scale(1.03);
+    }
+
+    .featured-tag {
+      position: absolute;
+      top: -14px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, #e6c86e, #d4af37);
+      color: #000;
+      padding: 4px 16px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+    }
+
+    .plan-name {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .plan-price {
+      font-size: 42px;
+      font-weight: 800;
+      color: var(--gold-light);
+      margin-bottom: 6px;
+    }
+
+    .plan-period {
+      color: var(--text-muted);
+      font-size: 14px;
+      margin-bottom: 24px;
+    }
+
+    .plan-features {
+      list-style: none;
+      text-align: left;
+      margin-bottom: 28px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 20px;
+    }
+
+    .plan-features li {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .plan-features li span {
+      color: var(--gold);
+      font-weight: bold;
+    }
+
+    /* Footer */
+    footer {
+      padding: 60px 0 40px;
+      text-align: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 28px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.2s ease;
+    }
+
+    .footer-links a:hover {
+      color: var(--gold);
+    }
+
+    .copyright {
+      color: #666;
+      font-size: 13px;
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 38px;
+      }
+      .hero p {
+        font-size: 17px;
+      }
+      .pricing-card.featured {
+        transform: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+      <a href="index.html" class="brand">
+        <img src="icon.png" alt="LuxeVault Icon" />
+        <span class="brand-name">LuxeVault</span>
+      </a>
+      <div class="nav-links">
+        <a href="privacy.html" class="nav-btn" id="nav-privacy">Privacy & Terms</a>
+        <select class="lang-select" id="langSelector" onchange="changeLanguage(this.value)">
+          <option value="en">English (US)</option>
+          <option value="zh-Hant">繁體中文</option>
+          <option value="zh-Hans">简体中文</option>
+          <option value="ja">日本語</option>
+          <option value="fr">Français</option>
+        </select>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="badge" id="hero-badge">✦ Haute Horlogerie & Rare Collectibles Vault</div>
+      <h1 id="hero-title">Your Physical Treasures.<br /><span class="hero-gradient">A Museum-Grade Private Vault.</span></h1>
+      <p id="hero-subtitle">
+        The definitive tracker engineered for collectors of luxury timepieces, rare spirits, graded cards, limited sneakers, and fine jewelry. Real-time net worth, on-device AI scanner, and certified PDF insurance dossiers.
+      </p>
+      <div class="hero-actions">
+        <a href="#pricing" class="btn-primary" id="hero-cta-download">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.37c.62-.75 1.04-1.8 0.92-2.85-.9.04-1.99.6-2.63 1.35-.57.66-1.06 1.73-.93 2.76 1 .08 2.02-.51 2.64-1.26z"/></svg>
+          Download on App Store
+        </a>
+        <a href="#features" class="btn-secondary" id="hero-cta-features">Explore Features</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features-section" id="features">
+    <div class="container">
+      <div class="section-header">
+        <h2 id="features-title">Engineered for Connoisseurs</h2>
+        <p id="features-subtitle">Blending Apple's most advanced frameworks with the timeless elegance of private banking vaults.</p>
+      </div>
+      <div class="grid">
+        <div class="card">
+          <div class="card-icon">📷</div>
+          <h3 id="f1-title">AI Vision Live Scanner</h3>
+          <p id="f1-desc">Instant on-device OCR extracts serial numbers, vintages, references, and card slab grades in seconds without manual typing.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">💎</div>
+          <h3 id="f2-title">3D Gyroscope Dynamic Lustre</h3>
+          <p id="f2-desc">Tilt your iPhone to experience realistic ambient light reflection on watch dials and jewelry, powered by CoreMotion.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">📈</div>
+          <h3 id="f3-title">Valuation & ROI Charts</h3>
+          <p id="f3-desc">Track real-time portfolio net worth, unrealized capital gains, and historical ROI curves with precision SwiftUI gradient charts.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">📄</div>
+          <h3 id="f4-title">Insurance-Ready PDF Dossiers</h3>
+          <p id="f4-desc">Generate single-tap, certified appraisal PDF records with photos and provenance for insurers, vaults, or estate planning.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">⏰</div>
+          <h3 id="f5-title">StandBy Display & Widgets</h3>
+          <p id="f5-desc">Transform your charging iPhone into a gold-glowing luxury desk clock and live valuation display with native WidgetKit.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🔒</div>
+          <h3 id="f6-title">100% Zero-Knowledge Privacy</h3>
+          <p id="f6-desc">No external servers, no tracking, zero telemetry. All assets and receipts are secured on-device and your private iCloud with Face ID.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Section -->
+  <section class="pricing-section" id="pricing">
+    <div class="container">
+      <div class="section-header">
+        <h2 id="pricing-title">Simple, Transparent Membership</h2>
+        <p id="pricing-subtitle">Protect thousands of dollars in physical wealth for less than the cost of a single dram.</p>
+      </div>
+      <div class="pricing-grid">
+        <!-- Monthly -->
+        <div class="pricing-card">
+          <div class="plan-name" id="p1-name">Monthly Pro</div>
+          <div class="plan-price" id="p1-price">$4.99</div>
+          <div class="plan-period" id="p1-period">/ month (flexible billing)</div>
+          <ul class="plan-features">
+            <li><span>✓</span> <span id="p-feat-1">Unlimited asset vault capacity</span></li>
+            <li><span>✓</span> <span id="p-feat-2">AI Vision live OCR scanner</span></li>
+            <li><span>✓</span> <span id="p-feat-3">Secondary market benchmarks</span></li>
+            <li><span>✓</span> <span id="p-feat-4">Cancel anytime</span></li>
+          </ul>
+          <a href="#" class="btn-secondary" style="width: 100%; justify-content: center;" id="p1-btn">Select Monthly</a>
+        </div>
+
+        <!-- Yearly (Featured) -->
+        <div class="pricing-card featured">
+          <div class="featured-tag" id="p2-tag">Most Popular • Save 33%</div>
+          <div class="plan-name" id="p2-name">Yearly Pro</div>
+          <div class="plan-price" id="p2-price">$39.99</div>
+          <div class="plan-period" id="p2-period">/ year (~$3.33/mo, 7-day free trial)</div>
+          <ul class="plan-features">
+            <li><span>✓</span> <span id="p2-feat-1">7-Day Free Trial included</span></li>
+            <li><span>✓</span> <span id="p-feat-5">Official PDF insurance dossiers</span></li>
+            <li><span>✓</span> <span id="p-feat-6">WidgetKit & StandBy ecosystem</span></li>
+            <li><span>✓</span> <span id="p-feat-7">Save 33% compared to monthly</span></li>
+          </ul>
+          <a href="#" class="btn-primary" style="width: 100%; justify-content: center;" id="p2-btn">Start 7-Day Free Trial</a>
+        </div>
+
+        <!-- Lifetime -->
+        <div class="pricing-card">
+          <div class="plan-name" id="p3-name">Founder Lifetime</div>
+          <div class="plan-price" id="p3-price">$99.99</div>
+          <div class="plan-period" id="p3-period">one-time payment, lifetime access</div>
+          <ul class="plan-features">
+            <li><span>✓</span> <span id="p3-feat-1">Permanent access to all future updates</span></li>
+            <li><span>✓</span> <span id="p3-feat-2">No subscription fatigue</span></li>
+            <li><span>✓</span> <span id="p3-feat-3">Exclusive Founder Edition status</span></li>
+            <li><span>✓</span> <span id="p3-feat-4">Family Sharing support</span></li>
+          </ul>
+          <a href="#" class="btn-secondary" style="width: 100%; justify-content: center;" id="p3-btn">Get Lifetime Access</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-links">
+        <a href="privacy.html" id="foot-privacy">Privacy Policy</a>
+        <a href="privacy.html#terms" id="foot-terms">Terms of Service (EULA)</a>
+        <a href="mailto:howly7777777@gmail.com" id="foot-support">Support: howly7777777@gmail.com</a>
+      </div>
+      <p class="copyright" id="foot-copy">© 2026 LuxeVault. Designed by vajrahowly. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Multilingual Translation Script -->
+  <script>
+    const translations = {
+      "en": {
+        "nav-privacy": "Privacy & Terms",
+        "hero-badge": "✦ Haute Horlogerie & Rare Collectibles Vault",
+        "hero-title": "Your Physical Treasures.<br /><span class='hero-gradient'>A Museum-Grade Private Vault.</span>",
+        "hero-subtitle": "The definitive tracker engineered for collectors of luxury timepieces, rare spirits, graded cards, limited sneakers, and fine jewelry. Real-time net worth, on-device AI scanner, and certified PDF insurance dossiers.",
+        "hero-cta-download": "Download on App Store",
+        "hero-cta-features": "Explore Features",
+        "features-title": "Engineered for Connoisseurs",
+        "features-subtitle": "Blending Apple's most advanced frameworks with the timeless elegance of private banking vaults.",
+        "f1-title": "AI Vision Live Scanner",
+        "f1-desc": "Instant on-device OCR extracts serial numbers, vintages, references, and card slab grades in seconds without manual typing.",
+        "f2-title": "3D Gyroscope Dynamic Lustre",
+        "f2-desc": "Tilt your iPhone to experience realistic ambient light reflection on watch dials and jewelry, powered by CoreMotion.",
+        "f3-title": "Valuation & ROI Charts",
+        "f3-desc": "Track real-time portfolio net worth, unrealized capital gains, and historical ROI curves with precision SwiftUI gradient charts.",
+        "f4-title": "Insurance-Ready PDF Dossiers",
+        "f4-desc": "Generate single-tap, certified appraisal PDF records with photos and provenance for insurers, vaults, or estate planning.",
+        "f5-title": "StandBy Display & Widgets",
+        "f5-desc": "Transform your charging iPhone into a gold-glowing luxury desk clock and live valuation display with native WidgetKit.",
+        "f6-title": "100% Zero-Knowledge Privacy",
+        "f6-desc": "No external servers, no tracking, zero telemetry. All assets and receipts are secured on-device and your private iCloud with Face ID.",
+        "pricing-title": "Simple, Transparent Membership",
+        "pricing-subtitle": "Protect thousands of dollars in physical wealth for less than the cost of a single dram.",
+        "p1-name": "Monthly Pro",
+        "p1-price": "$4.99",
+        "p1-period": "/ month (flexible billing)",
+        "p1-btn": "Select Monthly",
+        "p2-tag": "Most Popular • Save 33%",
+        "p2-name": "Yearly Pro",
+        "p2-price": "$39.99",
+        "p2-period": "/ year (~$3.33/mo, 7-day free trial)",
+        "p2-btn": "Start 7-Day Free Trial",
+        "p3-name": "Founder Lifetime",
+        "p3-price": "$99.99",
+        "p3-period": "one-time payment, lifetime access",
+        "p3-btn": "Get Lifetime Access",
+        "foot-privacy": "Privacy Policy",
+        "foot-terms": "Terms of Service (EULA)",
+        "foot-support": "Support: howly7777777@gmail.com",
+        "foot-copy": "© 2026 LuxeVault. Designed by vajrahowly. All rights reserved."
+      },
+      "zh-Hant": {
+        "nav-privacy": "隱私權與服務條款",
+        "hero-badge": "✦ 頂級鐘錶與稀有實體藏品保險庫",
+        "hero-title": "為您的實體珍藏，<br /><span class='hero-gradient'>打造博物館級黑金私人保險庫。</span>",
+        "hero-subtitle": "專為名錶、珍稀威士忌、PSA/BGS評級卡牌、限量球鞋與高級珠寶藏家量身訂製。實時追蹤身價與回報率、AI 鏡頭秒級 OCR 識別、一鍵產出保險認證 PDF 清單。",
+        "hero-cta-download": "前往 App Store 下載",
+        "hero-cta-features": "探索核心功能",
+        "features-title": "專為極致藏家匠心打造",
+        "features-subtitle": "融合 Apple 原生尖端框架與瑞士私人銀行保險庫的黑金尊榮美學。",
+        "f1-title": "AI 鏡頭即時 OCR 取景框",
+        "f1-desc": "鏡頭對準酒標、腕表面盤或卡牌夾板，端側即刻辨識年份、型號、評級與序號，徹底告別繁瑣打字。",
+        "f2-title": "CoreMotion 陀螺儀動態光澤",
+        "f2-desc": "輕轉 iPhone，卡片光澤依環境光源微光流轉，完美還原實體珠寶名錶在展示櫃中的璀璨真彩。",
+        "f3-title": "即時淨值與回報率圖表",
+        "f3-desc": "透過優雅的 SwiftUI 漸層趨勢圖與品類分佈環，精準掌握未實現溢價與年化投資報酬率（ROI %）。",
+        "f4-title": "保險級認證 PDF 鑑價清冊",
+        "f4-desc": "面對居家防護、保險投保或繼承轉售，一鍵匯出包含高解析照片、序號與鑑價紀錄的專業清冊。",
+        "f5-title": "Apple StandBy 待機模式與小組件",
+        "f5-desc": "橫向充電即刻變身奢華黑金鐘錶展台；桌面與鎖定畫面 WidgetKit 隨時映照您的資產脈動。",
+        "f6-title": "100% 純本地 Zero-Knowledge 隱私",
+        "f6-desc": "無外部伺服器、無廣告追蹤。所有資料與照片僅儲存在您的本機與個人私人 iCloud，由 Face ID 雙重防護。",
+        "pricing-title": "清晰透明的尊榮會籍",
+        "pricing-subtitle": "只需不到半瓶好酒的零頭，永久守護您價值數萬美元的私人珍藏。",
+        "p1-name": "月度尊榮會員",
+        "p1-price": "NT$160",
+        "p1-period": "/ 月 (每月彈性解鎖)",
+        "p1-btn": "選取月度方案",
+        "p2-tag": "最受歡迎 • 現省 33%",
+        "p2-name": "年度尊榮會員",
+        "p2-price": "NT$1,290",
+        "p2-period": "/ 年 (約 NT$108/月，含 7 天免費試用)",
+        "p2-btn": "立即開啟 7 天免費試用",
+        "p3-name": "創始人終身買斷",
+        "p3-price": "NT$3,290",
+        "p3-period": "一次性付費，終身享有所有更新",
+        "p3-btn": "享有終身席位",
+        "foot-privacy": "隱私權政策",
+        "foot-terms": "服務條款 (EULA)",
+        "foot-support": "支援信箱: howly7777777@gmail.com",
+        "foot-copy": "© 2026 LuxeVault. 由 vajrahowly 精心設計。保留所有權利。"
+      },
+      "zh-Hans": {
+        "nav-privacy": "隐私政策与条款",
+        "hero-badge": "✦ 顶级钟表与稀有实体藏品保险库",
+        "hero-title": "为您的实体珍藏，<br /><span class='hero-gradient'>打造博物馆级黑金私密保险库。</span>",
+        "hero-subtitle": "专为名表、珍稀威士忌、PSA/BGS评级卡牌、限量球鞋与高级珠宝藏家量身定制。实时追踪身价与回报率、AI 镜头秒级 OCR 识别、一键导出保险认证 PDF 清单。",
+        "hero-cta-download": "前往 App Store 下载",
+        "hero-cta-features": "探索核心功能",
+        "features-title": "专为极致藏家匠心打造",
+        "features-subtitle": "融合 Apple 原生尖端框架与瑞士私人银行保险库的黑金尊荣美学。",
+        "f1-title": "AI 镜头实时 OCR 取景框",
+        "f1-desc": "镜头对准酒标、腕表面盘或卡牌夹板，端侧即刻识别年份、型号、评级与序号，告别繁琐打字。",
+        "f2-title": "CoreMotion 陀螺仪动态光泽",
+        "f2-desc": "轻转 iPhone，卡片光泽依环境光源流动，完美还原宝物在展柜中的非凡光芒。",
+        "f3-title": "实时净值与回报率图表",
+        "f3-desc": "借助典雅的 SwiftUI 渐变趋势图与品类分布环，精准掌握浮动溢价与年化回报率（ROI %）。",
+        "f4-title": "保险级认证 PDF 估值清单",
+        "f4-desc": "面对财产盘点、保险投保或转售，一键导出包含高清图、序号与估值历史的专业清册。",
+        "f5-title": "Apple StandBy 待机模式与小组件",
+        "f5-desc": "横向充电即刻变身奢华展台；支持丰富尺寸的桌面与锁屏 WidgetKit，时刻洞悉身价。",
+        "f6-title": "100% 纯本地 Zero-Knowledge 隐私",
+        "f6-desc": "不设外部服务器、零追踪。所有数据仅储存在您的设备本土与专属私有 iCloud，由 Face ID 保护。",
+        "pricing-title": "清晰透明的尊荣会籍",
+        "pricing-subtitle": "只需不到半瓶佳酿的零头，永久守护您价值数万美元的私人珍藏。",
+        "p1-name": "月度尊荣会员",
+        "p1-price": "¥38",
+        "p1-period": "/ 月 (按月弹性计费)",
+        "p1-btn": "选取月度方案",
+        "p2-tag": "最受欢迎 • 立省 33%",
+        "p2-name": "年度尊荣会员",
+        "p2-price": "¥268",
+        "p2-period": "/ 年 (含 7 天免费试用)",
+        "p2-btn": "立即开启 7 天免费试用",
+        "p3-name": "创始人终身买断",
+        "p3-price": "¥698",
+        "p3-period": "一次性付费，终身享有所有更新",
+        "p3-btn": "享有终身席位",
+        "foot-privacy": "隐私政策",
+        "foot-terms": "服务条款 (EULA)",
+        "foot-support": "支持邮箱: howly7777777@gmail.com",
+        "foot-copy": "© 2026 LuxeVault. 由 vajrahowly 精心设计。保留所有权利。"
+      },
+      "ja": {
+        "nav-privacy": "プライバシーと規約",
+        "hero-badge": "✦ 高級時計・実物コレクション専用デジタル金庫",
+        "hero-title": "あなたの実物コレクションを、<br /><span class='hero-gradient'>美術館級のデジタル金庫へ。</span>",
+        "hero-subtitle": "高級機械式時計、希少ウイスキー、鑑定済みトレカ、限定スニーカーのためのプレミアム資産管理。リアルタイム評価額、AIカメラ自動OCR、保険対応PDF出力を搭載。",
+        "hero-cta-download": "App Store でダウンロード",
+        "hero-cta-features": "機能を詳しく見る",
+        "features-title": "真のコレクターのために設計",
+        "features-subtitle": "Appleの最先端フレームワークとプライベートバンクのラグジュアリーデザインの融合。",
+        "f1-title": "AIカメラ即時OCRスキャン",
+        "f1-desc": "ボトルラベルや時計の文字盤、鑑定カードのスラブを端末内で瞬時に読み取り自動入力。",
+        "f2-title": "ジャイロ連動 3Dダイナミックカード",
+        "f2-desc": "iPhoneを傾けると光彩がリアルタイムに変化し、ショーケース越しのような質感を再現。",
+        "f3-title": "資産評価額＆利回りチャート",
+        "f3-desc": "SwiftUIグラデーションチャートで総資産額、含み損益、投資利回り（ROI %）を可視化。",
+        "f4-title": "保険申請対応 PDF資産台帳",
+        "f4-desc": "万が一の盗難や保険査定に備え、写真やシリアル番号を含む正式な鑑定台帳をワンタップ出力。",
+        "f5-title": "StandByモード＆ウィジェット",
+        "f5-desc": "充電中に横向きに置くだけでラグジュアリーな展示時計に変身。WidgetKit常時表示に対応。",
+        "f6-title": "完全ローカル・ゼロナレッジ保護",
+        "f6-desc": "外部サーバーへの通信なし。全ての資産データは端末と個人iCloud内にFace IDで暗号化保護。",
+        "pricing-title": "シンプルで明瞭なメンバーシップ",
+        "pricing-subtitle": "ウイスキー1杯以下のわずかな投資で、数百万円のコレクションを恒久的に管理。",
+        "p1-name": "月額Proプラン",
+        "p1-price": "¥700",
+        "p1-period": "/ 月 (いつでも解約可能)",
+        "p1-btn": "月額プランを選択",
+        "p2-tag": "一番人気 • 33% OFF",
+        "p2-name": "年間Pro (7日間無料)",
+        "p2-price": "¥5,500",
+        "p2-period": "/ 年 (初回7日間無料体験付き)",
+        "p2-btn": "7日間無料体験を開始",
+        "p3-name": "ファウンダー終身版",
+        "p3-price": "¥14,000",
+        "p3-period": "買い切り一括払い、生涯無制限アクセス",
+        "p3-btn": "終身アクセスを購入",
+        "foot-privacy": "プライバシーポリシー",
+        "foot-terms": "利用規約 (EULA)",
+        "foot-support": "サポート窓口: howly7777777@gmail.com",
+        "foot-copy": "© 2026 LuxeVault. Designed by vajrahowly. All rights reserved."
+      },
+      "fr": {
+        "nav-privacy": "Confidentialité & Conditions",
+        "hero-badge": "✦ Coffre Privé de Haute Horlogerie & Collections Rares",
+        "hero-title": "Vos Trésors Physiques.<br /><span class='hero-gradient'>Un Coffre Numérique de Prestige.</span>",
+        "hero-subtitle": "Le gestionnaire de patrimoine conçu sur mesure pour les collectionneurs de montres, grands crus, cartes gradées et pièces exclusives. Suivi de valeur marchande, scanner IA et rapports d'assurance PDF.",
+        "hero-cta-download": "Télécharger sur l'App Store",
+        "hero-cta-features": "Découvrir les fonctionnalités",
+        "features-title": "Conçu pour les Connaisseurs",
+        "features-subtitle": "L'alliance parfaite entre les technologies Apple et le raffinement de la banque privée.",
+        "f1-title": "Scanner Intelligent Vision IA",
+        "f1-desc": "Reconnaissance OCR instantanée sur l'appareil pour extraire les numéros de série, années et grades sans saisie manuelle.",
+        "f2-title": "Reflets 3D Gyroscopiques",
+        "f2-desc": "Inclinez votre iPhone pour faire scintiller vos pièces sous une lumière dynamique réaliste via CoreMotion.",
+        "f3-title": "Tableau de Bord & Graphiques ROI",
+        "f3-desc": "Suivez la valorisation en temps réel, les plus-values latentes et vos rendements historiques avec SwiftUI.",
+        "f4-title": "Rapports d'Assurance PDF Certifiés",
+        "f4-desc": "Générez d'un geste un dossier complet d'inventaire avec photos et provenance pour vos assurances et successions.",
+        "f5-title": "Mode En Veille & Widgets",
+        "f5-desc": "Transformez votre iPhone en station de chevet horlogère dorée lors de la charge grâce à WidgetKit.",
+        "f6-title": "Confidentialité 100% Locale",
+        "f6-desc": "Zéro serveur externe, zéro traçage. Vos données restent strictement sur votre appareil et iCloud, verrouillées par Face ID.",
+        "pricing-title": "Adhésion Simple & Transparente",
+        "pricing-subtitle": "Protégez des dizaines de milliers d'euros de patrimoine pour une fraction de bouteille de prestige.",
+        "p1-name": "Mensuel Pro",
+        "p1-price": "5,99 €",
+        "p1-period": "/ mois (sans engagement)",
+        "p1-btn": "Choisir le Mensuel",
+        "p2-tag": "Le Plus Populaire • -33%",
+        "p2-name": "Annuel Pro (Essai 7j)",
+        "p2-price": "44,99 €",
+        "p2-period": "/ an (~3,75 €/mois, 7 jours d'essai gratuit)",
+        "p2-btn": "Commencer l'essai de 7 jours",
+        "p3-name": "Édition Fondateur à Vie",
+        "p3-price": "109,99 €",
+        "p3-period": "paiement unique, accès permanent à vie",
+        "p3-btn": "Obtenir l'accès à vie",
+        "foot-privacy": "Politique de Confidentialité",
+        "foot-terms": "Conditions d'Utilisation (EULA)",
+        "foot-support": "Support : howly7777777@gmail.com",
+        "foot-copy": "© 2026 LuxeVault. Conçu par vajrahowly. Tous droits réservés."
+      }
+    };
+
+    function changeLanguage(lang) {
+      const data = translations[lang] || translations["en"];
+      document.documentElement.lang = lang;
+      for (const key in data) {
+        const el = document.getElementById(key);
+        if (el) {
+          el.innerHTML = data[key];
+        }
+      }
+      localStorage.setItem("luxevault_lang", lang);
+    }
+
+    // Auto-detect browser language or load saved
+    window.addEventListener("DOMContentLoaded", () => {
+      const saved = localStorage.getItem("luxevault_lang");
+      if (saved && translations[saved]) {
+        document.getElementById("langSelector").value = saved;
+        changeLanguage(saved);
+      } else {
+        const browser = navigator.language || navigator.userLanguage;
+        if (browser.startsWith("zh-TW") || browser.startsWith("zh-HK")) changeLanguage("zh-Hant");
+        else if (browser.startsWith("zh")) changeLanguage("zh-Hans");
+        else if (browser.startsWith("ja")) changeLanguage("ja");
+        else if (browser.startsWith("fr")) changeLanguage("fr");
+        else changeLanguage("en");
+      }
+    });
+  </script>
+</body>
+</html>
